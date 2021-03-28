@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header v-bind:title="location"></Header>
+    <Forecast></Forecast>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue';
+import Forecast from './components/Forecast.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Forecast
+  },
+  data() {
+    return {
+      location: 'Budapest'
+    }
   }
 }
 </script>
