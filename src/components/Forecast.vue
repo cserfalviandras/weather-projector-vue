@@ -1,6 +1,6 @@
 <template>
     <div v-if="weatherData">
-        <h3>Forecast Pressure</h3>
+        <h3>Forecast</h3>
         <b-table striped :items="weatherData.hourly"></b-table>
     </div>
     <div v-else>
@@ -34,7 +34,7 @@ export default {
 
         this.weatherData.hourly.forEach(hour => {
             hour.dt = convertTime(hour.dt);
-            delete hour.weather;
+            hour.weather = hour.weather[0].main;
         });
     }
 }
