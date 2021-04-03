@@ -1,6 +1,6 @@
 <template>
     <div v-if="weatherData">
-        <h3>Forecast Pressure</h3>
+        <h3>Forecast</h3>
         <b-table striped :items="weatherData.hourly"></b-table>
     </div>
     <div v-else>
@@ -17,7 +17,7 @@ export default {
         }
     },
     async created() {
-        const url = "http://api.openweathermap.org/data/2.5/onecall?lat=47.497913&lon=19.040236&appid=eb978d87450039215931b254857202d7&units=metric";
+        const url = "https://api.openweathermap.org/data/2.5/onecall?lat=47.497913&lon=19.040236&appid=eb978d87450039215931b254857202d7&units=metric";
         const response = await fetch(url);
         const data = await response.json();
         await (this.weatherData = data);
@@ -34,7 +34,7 @@ export default {
 
         this.weatherData.hourly.forEach(hour => {
             hour.dt = convertTime(hour.dt);
-            delete hour.weather;
+            hour.weather = hour.weather[0].main;
         });
     }
 }
