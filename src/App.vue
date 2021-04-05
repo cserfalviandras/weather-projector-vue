@@ -1,17 +1,20 @@
 <template>
   <div id="app">
+    <SearchBox></SearchBox>
     <Header v-bind:title="location"></Header>
     <Forecast></Forecast>
   </div>
 </template>
 
 <script>
+import SearchBox from './components/SearchBox.vue';
 import Header from './components/Header.vue';
 import Forecast from './components/Forecast.vue';
 
 export default {
   name: 'App',
   components: {
+    SearchBox,
     Header,
     Forecast
   },
